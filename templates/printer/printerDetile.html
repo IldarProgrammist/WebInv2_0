@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+   {% block  header%}
+        {% include 'header.html' %}
+    {% endblock %}
+
+    {% block content %}
+
+        <div class="wrap_ditile_printer">
+
+                <div class="container">
+                <a class="Link_header" href="{% url 'printerList' %}">Назад</a>
+                    <div class="row">
+                         <div class="col">
+                             <div class="col"><h3>Информация:</h3></div>
+                             <div class="col"> <p><strong>Категория:</strong>  {{ printer.serialNumber }}</p></div>
+                            <div class="col"><p><strong>Серийный номер:</strong>  {{ printer.status.name }}</p></div>
+                             <div class="col"><h3>Место расположение:</h3></div>
+                            <div class="col"><p><strong>Титул:</strong> {{ printer.location.titul.name }}</div>
+                             <div class="col"><p><strong>Кабинет:</strong> {{ printer.location.number }}</div>
+                            <div class="col"><p><strong>Описание:</strong> {{ printer.discription }}</p></div>
+                         </div>
+                        <div class="col">
+                              {%  if printer.printerModel.photo %}
+                                 <img  class="img-printer_detile" src="{{ printer.printerModel.photo.url }}"  alt="...">
+                             {% else %}
+                                <img  src="{% static 'img/print.png' %}" class="card-img" alt="...">
+                              {% endif %}
+                        </div>
+
+                    </div>
+                </div>
+        </div>
+
+
+    {% endblock %}
+
+    {% block footer %}
+    {% endblock %}

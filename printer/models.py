@@ -1,4 +1,8 @@
 from django.db import models
+from django.urls import reverse
+
+from locations.models import Room
+
 
 class PrinterModel(models.Model):
     name = models.CharField(max_length=100, verbose_name='Название модели')
@@ -24,8 +28,6 @@ class PrinterFirm(models.Model):
     class Meta:
         verbose_name = 'Фирма принтера'
         verbose_name_plural = 'Фирмы принтеров'
-
-
 
 
 class Category(models.Model):
@@ -55,7 +57,8 @@ class PrinterStatus(models.Model):
 
 class Printer(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='Категория')
-    name = models.CharField(max_length=100, verbose_name='Имя принтера', unique=True)
+    name = models.CharField(max_length=40, verbose_name='Имя принтера', unique=True)
+    ip_adress = models.CharField(max_length=50, verbose_name='Ip-адрес', unique=True)
     serialNumber = models.CharField(max_length=100, verbose_name='Серийный номер', unique=True)
     printerModel = models.ForeignKey(PrinterModel, on_delete=models.Case, verbose_name='Модель принтера')
 
@@ -70,15 +73,20 @@ class Printer(models.Model):
 
 class JurnalPrinter(models.Model):
     apper = models.CharField(max_length=100, verbose_name='Обращение', unique=True)
-    serialNumber = models.ForeignKey(Printer, on_delete=models.CASCADE, verbose_name='Серийный номер принтера')
+    serialNumber = models.ForeignKey(Printer, on_delete=models.CASCADE, verbose_name='Имя принтера')
     status = models.ForeignKey(PrinterStatus,on_delete=models.CASCADE, verbose_name='Статус')
+    location = models.ForeignKey(Room, on_delete=models.CASCADE, verbose_name='Кабинет')
     date = models.DateField(verbose_name='Дата')
-
+    discription = models.TextField(verbose_name='Описание', blank=True)
     def __str__(self):
         return self.apper
 
     class Meta:
         verbose_name = 'Журнал принтера'
         verbose_name_plural = 'Журналы принтеров'
+
+    def get_absolute_url(self):
+        return reverse('jurnal_printer')
+
 
 

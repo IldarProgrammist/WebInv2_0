@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+
+    {% block  header%}
+        {% include 'header.html' %}
+    {% endblock %}
+
+    {% block content %}
+
+        <div class="container">
+            <div class="row">
+                 <h3 class="List-title">Журнал</h3>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+            <div class="col"></div>
+                <div class="col"></div>
+
+        <div class="col">
+            <nav class="navbar navbar-light">
+
+
+                <form action="{%  url 'jurnal_printer' %}" method="get" class="form-inline">
+                     <input  name="q" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </nav>
+        </div>
+        </div>
+        </div>
+            <div class="container">
+                     <a class="Link_login" href="{% url 'create_jurnal_printer' %}">Добавить</a>
+                <table class="table">
+                      <thead>
+                      <tr>
+                          <th>Номер обращения</th>
+                          <th>Серийный номер</th>
+                          <th>Модель принтера</th>
+                          <th>Фирма принтера</th>
+
+
+                          <th>Статус</th>
+                          <th>Дата</th>
+                      </tr>
+
+                    {% for prtinter in jpl %}
+                        <tbody>
+                            <tr>
+                                 <td>{{ prtinter.apper }}</td>
+                                 <td> {{ prtinter.serialNumber }} </td>
+                                <td>{{ prtinter.serialNumber.printerModel.name }}</td>
+                                <td>{{ prtinter.serialNumber.printerModel.firm }}</td>
+                                 <td>{{ prtinter.status}}</td>
+                                 <td>{{ prtinter.date }}</td>
+                            </tr>
+                        </tbody>
+
+                    {% endfor %}
+                </table>
+            </div>
+    {% endblock %}
+
+    {% block footer %}
+
+    {% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+  {% block  header%}
+        {% include 'header.html' %}
+    {% endblock %}
+
+    {% block content %}
+
+
+            <div class="container">
+                <div class="row">
+                     <a id="keybord" href="{% url 'jurnal_printer' %}"><img  src="{% static 'img/angle_left-48_46775.png' %}"></a>
+                        <form method="post">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button type="submit" class="btn btn-outline-secondary">Сохранить</button>
+                        </form>
+                </div>
+            </div>
+
+
+    {% endblock %}
+
+    {% block footer %}
+
+    {% endblock %}

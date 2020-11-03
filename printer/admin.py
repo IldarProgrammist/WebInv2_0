@@ -36,4 +36,4 @@ class PrinterChoiceField(forms.ModelChoiceField):
 
 @admin.register(JurnalPrinter)
 class JurnalPrinterAdmin(admin.ModelAdmin):
-    list_display = ['serialNumber','status', 'date']
+    list_display = ['status',  'date']

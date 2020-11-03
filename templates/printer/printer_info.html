@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+   {% block  header%}
+        {% include 'header.html' %}
+    {% endblock %}
+
+
+
+    {% block content %}
+        <div class="wrap-index">
+         <div class="container">
+            <div class="row">
+
+                 <div class="col">
+                      <a href="{% url 'printerList' %}"><img id="img_title" class="img-wrapper" src="{% static 'img/list-1_icon-icons.com_58876.png' %}"></a>
+                     <a class="link_in_img" href="{% url 'printerList' %}">Список принтеров</a>
+                </div>
+
+
+                  <div class="col">
+                      <a href="{% url 'jurnal_printer' %}"><img  src="{% static 'img/jurnal.png' %}"></a>
+                      <a class="link_in_img" href="{% url 'jurnal_printer' %}">Журнал принтеров</a>
+                </div>
+
+
+
+                 <div class="col">
+                      <a href="#"><img  class="img-wrapper" src="{% static 'img/pazli.png' %}"></a>
+                      <a class="link_in_img" href="#">Совместимость с картриджами</a>
+                </div>
+
+            </div>
+        </div>
+
+        </div>
+
+
+    {% endblock %}
+
+    {% block footer %}
+
+    {% endblock %}

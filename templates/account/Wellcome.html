@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+   {% block  header%}
+        {% include 'headerWelcom.html' %}
+    {% endblock %}
+
+
+    {% block content %}
+        <div class="container">
+            <div class="row">
+               <h4>Добро пожаловать на сайт InvWeb </h4>
+            </div>
+              <div class="col"><p>Если у Вас есть логин и пароль тогда необходимо  <a class="Link_login" href="{% url 'login' %}">авторизироваться</a>  на сайте</p></div>
+
+
+        </div>
+
+    {% endblock %}
+
+    {% block footer %}
+
+    {% endblock %}

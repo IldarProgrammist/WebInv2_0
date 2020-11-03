@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+    {% block  header%}
+        {% include 'header.html' %}
+    {% endblock %}
+
+
+    {% block content %}
+            <div class="container">
+                <div class="row">
+                     <div class="col">
+                     <a href="{% url 'print' %}"><img src="{% static 'img/print-printer-tool-with-printed-paper-outlined-symbol_icon-icons.com_57772.png' %}"></a>
+               <div class="col"><div class="link_img"> <a href="{% url 'print' %}">Печать</a></div> </div>
+
+            </div>
+
+                </div>
+            </div>
+
+
+    {% endblock %}
+
+
+
