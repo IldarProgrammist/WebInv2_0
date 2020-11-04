@@ -26,6 +26,8 @@ INSTALLED_APPS = [
     'mainapp',
     'account',
     'locations',
+    'catriges',
+
 ]
 
 MIDDLEWARE = [

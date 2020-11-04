@@ -21,6 +21,9 @@ class PrinterStatusAdmin(admin.ModelAdmin):
     list_display = ['name']
 
 
+
+
+
 @admin.register(Printer)
 class PrinterAdmin(admin.ModelAdmin):
     list_display = ['name','serialNumber','category','printerModel']
